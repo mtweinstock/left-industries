@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Left Industries — Handbuilt Electric Guitars</title>
+    <meta name="description" content="Left Industries builds premium electric guitars by hand in Washington State. Custom instruments engineered for left and right-handed players.">
+
+    <!-- Google Fonts: Archivo for headlines, Lora for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* ---------- Reset & base ---------- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --color-bg-dark: #1a1a1a;
+            --color-bg-light: #f4f1ea;
+            --color-brown: #3a2a22;
+            --color-brass: #b8895a;
+            --color-text-dark: #1a1a1a;
+            --color-text-light: #f4f1ea;
+            --color-text-muted: #8a8a8a;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--color-text-dark);
+            background: var(--color-bg-light);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, .nav-brand {
+            font-family: 'Archivo', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            line-height: 1.1;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        /* ---------- Layout ---------- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section { padding: 6rem 0; }
+
+        /* ---------- Navigation ---------- */
+        .nav {
+            position: sticky;
+            top: 0;
+            background: var(--color-bg-dark);
+            color: var(--color-text-light);
+            padding: 1rem 0;
+            z-index: 100;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            font-family: 'Archivo', sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+
+        .nav-links a {
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover { color: var(--color-brass); }
+
+        /* ---------- Hero ---------- */
+        .hero {
+            background: var(--color-bg-dark);
+            color: var(--color-text-light);
+            padding: 8rem 0 10rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                linear-gradient(rgba(184, 137, 90, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(184, 137, 90, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero-logo {
+            width: 280px;
+            max-width: 60%;
+            margin: 0 auto 3rem;
+            filter: invert(91%) sepia(8%) saturate(263%) hue-rotate(7deg) brightness(102%) contrast(91%);
+        }
+
+        .hero-tagline {
+            font-family: 'Archivo', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-sub {
+            font-size: 1.15rem;
+            color: #b8b8b8;
+            max-width: 560px;
+            margin: 0 auto 3rem;
+        }
+
+        .hero-meta {
+            display: inline-block;
+            font-family: 'Archivo', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--color-brass);
+            border: 1px solid var(--color-brass);
+            padding: 0.6rem 1.4rem;
+            font-weight: 600;
+        }
+
+        /* ---------- Section: What We Build ---------- */
+        .section-label {
+            font-family: 'Archivo', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--color-brass);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            margin-bottom: 1.5rem;
+            max-width: 720px;
+        }
+
+        .section-lead {
+            font-size: 1.15rem;
+            max-width: 680px;
+            color: #444;
+            margin-bottom: 4rem;
+        }
+
+        .build-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .build-card {
+            border-top: 2px solid var(--color-brown);
+            padding-top: 2rem;
+        }
+
+        .build-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--color-brown);
+        }
+
+        .build-card p {
+            color: #555;
+            font-size: 1rem;
+        }
+
+        /* ---------- Section: Maker ---------- */
+        .maker {
+            background: var(--color-brown);
+            color: var(--color-text-light);
+        }
+
+        .maker .section-label { color: var(--color-brass); }
+
+        .maker-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .maker-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #d4cfc4;
+        }
+
+        .maker-image {
+            background: #2a1e18;
+            aspect-ratio: 4 / 5;
+            border: 1px solid #4a3a32;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6a5a52;
+            font-family: 'Archivo', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        .link-arrow {
+            display: inline-block;
+            font-family: 'Archivo', sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 600;
+            color: var(--color-brass);
+            border-bottom: 1px solid var(--color-brass);
+            padding-bottom: 0.3rem;
+            margin-top: 1rem;
+            transition: opacity 0.2s ease;
+        }
+
+        .link-arrow:hover { opacity: 0.7; }
+
+        /* ---------- Section: Lefty ---------- */
+        .lefty {
+            background: var(--color-bg-light);
+            text-align: center;
+        }
+
+        .lefty .section-label {
+            display: block;
+            margin: 0 auto 1rem;
+        }
+
+        .lefty-title {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            margin: 0 auto 2rem;
+            max-width: 800px;
+        }
+
+        .lefty-body {
+            font-size: 1.15rem;
+            max-width: 680px;
+            margin: 0 auto;
+            color: #444;
+        }
+
+        /* ---------- Footer ---------- */
+        .footer {
+            background: var(--color-bg-dark);
+            color: var(--color-text-light);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer h4 {
+            font-family: 'Archivo', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+            color: var(--color-brass);
+        }
+
+        .footer p, .footer a {
+            color: #b8b8b8;
+            font-size: 0.95rem;
+        }
+
+        .footer ul { list-style: none; }
+
+        .footer li { margin-bottom: 0.5rem; }
+
+        .footer a:hover { color: var(--color-brass); }
+
+        .footer-bottom {
+            border-top: 1px solid #2a2a2a;
+            padding-top: 2rem;
+            font-size: 0.85rem;
+            color: #6a6a6a;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* ---------- Mobile ---------- */
+        @media (max-width: 768px) {
+            section { padding: 4rem 0; }
+            .container { padding: 0 1.25rem; }
+            .nav-links { gap: 1.25rem; font-size: 0.75rem; }
+            .hero { padding: 5rem 0 6rem; }
+            .maker-inner { grid-template-columns: 1fr; gap: 2rem; }
+            .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+            .footer-bottom { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav-inner">
+            <div class="nav-brand">Left Industries</div>
+            <div class="nav-links">
+                <a href="#build">Instruments</a>
+                <a href="#maker">The Shop</a>
+                <a href="#commission">Commission</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero">
+        <div class="container hero-inner">
+            <img src="logo.svg" alt="Left Industries" class="hero-logo">
+            <h1 class="hero-tagline">Handbuilt electric guitars for either side.</h1>
+            <p class="hero-sub">Premium instruments built one at a time in Washington State. Engineered with the same care for left-handed players as for right.</p>
+            <span class="hero-meta">Now Accepting Commissions</span>
+        </div>
+    </header>
+
+    <!-- What We Build -->
+    <section id="build">
+        <div class="container">
+            <div class="section-label">What We Build</div>
+            <h2 class="section-title">Six-string electrics, made deliberately.</h2>
+            <p class="section-lead">Every Left Industries guitar is built by hand, one at a time. No assembly line, no compromises, no afterthoughts about which hand it ends up in.</p>
+
+            <div class="build-grid">
+                <div class="build-card">
+                    <h3>Custom Builds</h3>
+                    <p>Commissioned instruments tailored to player and purpose. Woods, hardware, electronics, and orientation selected to match how and what you play.</p>
+                </div>
+                <div class="build-card">
+                    <h3>Shop Models</h3>
+                    <p>Periodic small-batch builds available directly. Each is a complete instrument, fully documented, with available specs and provenance.</p>
+                </div>
+                <div class="build-card">
+                    <h3>Left-Handed Focus</h3>
+                    <p>Left-handed orientation is offered at no upcharge and with no compromise. Same materials, same options, same attention.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Maker -->
+    <section id="maker" class="maker">
+        <div class="container">
+            <div class="maker-inner">
+                <div class="maker-text">
+                    <div class="section-label">The Shop</div>
+                    <h2 class="section-title">A one-person workshop in Washington State.</h2>
+                    <p>Left Industries is the work of one builder. Every guitar is designed, milled, joined, fretted, finished, and set up under one roof — without subcontractors, without batching, and without shortcuts.</p>
+                    <p>The "Left" in the name is personal: as a left-handed player, I started building because the custom options I wanted didn't exist. The "Industries" is aspirational — built like a small-batch manufacturer should be, with the rigor of a shop that takes its work seriously.</p>
+                    <a href="#" class="link-arrow">Read the full story →</a>
+                </div>
+                <div class="maker-image">[ Workshop photo ]</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lefty positioning -->
+    <section class="lefty">
+        <div class="container">
+            <div class="section-label">Built For Either Side</div>
+            <h2 class="lefty-title">Left-handed players deserve more than an afterthought.</h2>
+            <p class="lefty-body">Most major builders offer left-handed players a token catalog with reduced options, longer waits, and higher prices. Left Industries was started to change that. Every model we build is offered in either orientation, at the same price, with the same options, and the same lead time.</p>
+        </div>
+    </section>
+
+    <!-- Commission CTA -->
+    <section id="commission" style="background: var(--color-bg-dark); color: var(--color-text-light); text-align: center;">
+        <div class="container">
+            <div class="section-label">Commission</div>
+            <h2 class="section-title" style="margin: 0 auto 1.5rem; max-width: 760px;">Start a conversation about your next instrument.</h2>
+            <p style="font-size: 1.15rem; color: #b8b8b8; max-width: 600px; margin: 0 auto 2.5rem;">Commission slots are limited. Inquiries open with a conversation about what you play, what you want, and what's possible.</p>
+            <a href="mailto:hello@leftindustries.com" class="hero-meta" style="cursor: pointer;">Inquire by Email</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div>
+                    <h4>Left Industries</h4>
+                    <p>Handbuilt electric guitars.<br>Washington State, USA.</p>
+                </div>
+                <div>
+                    <h4>Site</h4>
+                    <ul>
+                        <li><a href="#build">Instruments</a></li>
+                        <li><a href="#maker">The Shop</a></li>
+                        <li><a href="#commission">Commission</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:hello@leftindustries.com">hello@leftindustries.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Left Industries</span>
+                <span>Built by hand. Both sides.</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
